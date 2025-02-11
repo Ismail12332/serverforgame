@@ -36,8 +36,8 @@ def create_app():
     bot.remove_webhook()
     bot.set_webhook(url=WEBHOOK_URL)  # Устанавливаем вебхук
 
+    if __name__ == "__main__":
+        app.run(debug=True)
+    
     return app
 
-if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
