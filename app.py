@@ -4,12 +4,13 @@ from flask import Flask, request
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
-def create_app():
 
+def create_app():
     TG_BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
     WEBHOOK_URL = os.getenv("WEBHOOK_URL")  # Укажи свой URL
+
+    # Создаем объект бота
     bot = telebot.TeleBot(TG_BOT_TOKEN)
 
     app = Flask(__name__)
@@ -31,8 +32,12 @@ def create_app():
 
         bot.send_message(message.chat.id, "Нажмите 'Играть!', чтобы запустить игру.", reply_markup=keyboard)
 
+    # Установка вебхука
+    bot.remove_webhook()
+    bot.set_webhook(url=WEBHOOK_URL)  # Устанавливаем вебхук
 
-    if __name__ == "__main__":
-            app.run(debug=True)
-    
     return app
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run(debug=True)
