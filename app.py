@@ -27,7 +27,7 @@ def create_app():
         print("Получена команда /start")
 
         keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-        game_button = KeyboardButton(text="Играть!", web_app=WebAppInfo(url="https://devourer-f.github.io/Game/"))
+        game_button = KeyboardButton(text="Играть!", web_app=WebAppInfo(url="https://ismail12332.github.io/4k/"))
         keyboard.add(game_button)
 
         bot.send_message(message.chat.id, "Нажмите 'Играть!', чтобы запустить игру.", reply_markup=keyboard)
